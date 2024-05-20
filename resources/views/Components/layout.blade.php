@@ -17,9 +17,11 @@
     </head>
     <body>
         <nav>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
+            <ul>
+                <x-nav-link><a href="/">Home</a></x-nav-link>
+                <x-nav-link><a href="/about">About</a></x-nav-link>
+                <x-nav-link><a href="/contact">Contact</a></x-nav-link>
+            </ul>
         </nav>
 
         {{ $slot }}
