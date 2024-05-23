@@ -18,7 +18,7 @@ class JobFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
-            'employee_id' => EmployeeFactory::new(),
+            'employer_id' => EmployerFactory::new(),
             'salary' => '$50,000'
         ];
     }
