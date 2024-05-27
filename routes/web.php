@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\JobController;
-use App\Models\Job;
+use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
@@ -20,3 +21,16 @@ Route::controller(JobController::class)->group(function () {
 
 //Job Resource Method ("Very Less to Write, very abstract")
 //Route::resource('jobs', JobController::class);
+
+// Registration Routes
+Route::controller(UserRegistrationController::class)->group(function () {
+    Route::get('/register', 'create');
+    Route::post('/register', 'store');
+});
+
+
+// Login Routes
+Route::controller(SessionController::class)->group(function () {
+    Route::get('/login', 'create');
+    Route::post('/login', 'store');
+});
