@@ -13,8 +13,10 @@ Route::controller(JobController::class)->group(function () {
     Route::get('/jobs', 'index');
     Route::get('/jobs/create', 'create');
     Route::get('/jobs/{job}', 'show');
-    Route::get('/jobs/{job}/edit', 'edit');
-    Route::post('/jobs', 'store');
+    Route::get('/jobs/{job}/edit', 'edit')
+        ->middleware('auth')
+        ->can('edit', 'job');
+    Route::post('/jobs', 'store')->middleware('auth');
     Route::patch('/jobs/{job}', 'update');
     Route::delete('/jobs/{job}', 'destroy');
 });
@@ -31,7 +33,7 @@ Route::controller(UserRegistrationController::class)->group(function () {
 
 // Login Routes
 Route::controller(SessionController::class)->group(function () {
-    Route::get('/login', 'create');
+    Route::get('/login', 'create')->name('login');
     Route::post('/login', 'store');
     Route::post('/logout', 'destroy');
 });

@@ -5,5 +5,7 @@
     <p class="mb-4">
         Gets the salary of amount - {{$job->salary}}
     </p>
-    <x-job-button href="/jobs/{{$job->id}}/edit">Edit Job</x-job-button>
+    @can('edit', $job)
+        <x-job-button href="/jobs/{{$job->id}}/edit">Edit Job</x-job-button>
+    @endcan
 </x-layout>
