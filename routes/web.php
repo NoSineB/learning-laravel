@@ -11,14 +11,20 @@ Route::view('/contact', 'contact');
 //Job Controller Method ("I find this much more flexible")
 Route::controller(JobController::class)->group(function () {
     Route::get('/jobs', 'index');
-    Route::get('/jobs/create', 'create');
+    Route::get('/jobs/create', 'create')
+        ->middleware('auth');
     Route::get('/jobs/{job}', 'show');
     Route::get('/jobs/{job}/edit', 'edit')
         ->middleware('auth')
         ->can('edit', 'job');
-    Route::post('/jobs', 'store')->middleware('auth');
-    Route::patch('/jobs/{job}', 'update');
-    Route::delete('/jobs/{job}', 'destroy');
+    Route::post('/jobs', 'store')
+        ->middleware('auth');
+    Route::patch('/jobs/{job}', 'update')
+        ->middleware('auth')
+        ->can('edit', 'job');
+    Route::delete('/jobs/{job}', 'destroy')
+        ->middleware('auth')
+        ->can('edit', 'job');
 });
 
 //Job Resource Method ("Very Less to Write, very abstract")

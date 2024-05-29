@@ -47,7 +47,6 @@ class JobController extends Controller
     }
 
     public function update(Job $job){
-        Gate::authorize('edit', $job);
 
         request()->validate([
             'title' => ['required', 'min:3'],
@@ -63,7 +62,6 @@ class JobController extends Controller
     }
 
     public function destroy(Job $job){
-        Gate::authorize('edit', $job);
         $job->delete();
         return redirect('/jobs');
     }
