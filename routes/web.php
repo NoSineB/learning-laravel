@@ -27,6 +27,11 @@ Route::controller(JobController::class)->group(function () {
         ->can('edit', 'job');
 });
 
+/*
+ * ->middleware([Action]) here action is 'auth' so it will check if authenticated. if not redirect them to login page.
+ * ->can([policyAction], [Model]) here edit is action on model 'job' from url.
+ */
+
 //Job Resource Method ("Very Less to Write, very abstract")
 //Route::resource('jobs', JobController::class);
 
